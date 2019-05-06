@@ -23,6 +23,8 @@ class BSSession: NSObject {
     private var advertiser: MCAdvertiserAssistant!
     private var peerID: MCPeerID
     
+    let kStreamName: String = "music"
+    
     weak var delegate: BSSessionDelegate?
     
     init(withDisplayName displayName: String) {
@@ -51,7 +53,7 @@ class BSSession: NSObject {
     }
     
     func outputStream(forPeer peer: MCPeerID) throws -> OutputStream {
-        return try session.startStream(withName: "music", toPeer: peer)
+        return try session.startStream(withName: kStreamName, toPeer: peer)
     }
     
     func sendData(_ data: Data) {
@@ -70,6 +72,8 @@ extension BSSession: MCSessionDelegate {
         case .connecting: print("Connecting to", peerID.displayName)
         case .connected: print("Connected to", peerID.displayName)
         case .notConnected: print("Disconnected from", peerID.displayName)
+        @unknown default:
+            fatalError("caught unhandled state")
         }
     }
     
@@ -79,7 +83,7 @@ extension BSSession: MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-        if streamName == "music" {
+        if streamName == kStreamName {
             print(#function)
             delegate?.session(session: self, didReceiveAudioStream: stream)
         }
