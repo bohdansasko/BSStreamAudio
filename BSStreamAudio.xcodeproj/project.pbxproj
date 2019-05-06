@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		205086D3227FF835005CBAC1 /* BSAudioStreamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205086D2227FF835005CBAC1 /* BSAudioStreamer.swift */; };
 		205086D5227FF8CF005CBAC1 /* BSSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205086D4227FF8CF005CBAC1 /* BSSession.swift */; };
+		205086D7228001A3005CBAC1 /* BSAudioStreamConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205086D6228001A3005CBAC1 /* BSAudioStreamConstants.swift */; };
 		20F80585227F8B150026E008 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F80584227F8B150026E008 /* AppDelegate.swift */; };
 		20F80587227F8B150026E008 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F80586227F8B150026E008 /* ViewController.swift */; };
 		20F8058A227F8B150026E008 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20F80588227F8B150026E008 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		205086D2227FF835005CBAC1 /* BSAudioStreamer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSAudioStreamer.swift; sourceTree = "<group>"; };
 		205086D4227FF8CF005CBAC1 /* BSSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSSession.swift; sourceTree = "<group>"; };
+		205086D6228001A3005CBAC1 /* BSAudioStreamConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSAudioStreamConstants.swift; sourceTree = "<group>"; };
 		20F80581227F8B150026E008 /* BSStreamAudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BSStreamAudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F80584227F8B150026E008 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20F80586227F8B150026E008 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +50,7 @@
 			children = (
 				207E8F9C227FF8040067840C /* Classes */,
 				20F80596227F8CD20026E008 /* BSAudioOutputStreamer.swift */,
+				205086D6228001A3005CBAC1 /* BSAudioStreamConstants.swift */,
 				205086D2227FF835005CBAC1 /* BSAudioStreamer.swift */,
 			);
 			path = AudioStream;
@@ -82,12 +85,12 @@
 			children = (
 				20F80584227F8B150026E008 /* AppDelegate.swift */,
 				20F80586227F8B150026E008 /* ViewController.swift */,
+				205086D4227FF8CF005CBAC1 /* BSSession.swift */,
 				207E8F9B227FF7730067840C /* AudioStream */,
 				20F80588227F8B150026E008 /* Main.storyboard */,
 				20F8058B227F8B170026E008 /* Assets.xcassets */,
 				20F8058D227F8B170026E008 /* LaunchScreen.storyboard */,
 				20F80590227F8B170026E008 /* Info.plist */,
-				205086D4227FF8CF005CBAC1 /* BSSession.swift */,
 			);
 			path = BSStreamAudio;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				205086D3227FF835005CBAC1 /* BSAudioStreamer.swift in Sources */,
+				205086D7228001A3005CBAC1 /* BSAudioStreamConstants.swift in Sources */,
 				205086D5227FF8CF005CBAC1 /* BSSession.swift in Sources */,
 				20F80597227F8CD20026E008 /* BSAudioOutputStreamer.swift in Sources */,
 				20F80599227F8E3B0026E008 /* BSAudioStream.swift in Sources */,
