@@ -12,8 +12,8 @@ import AudioToolbox
 protocol BSAudioFileStreamDelegate: class {
     func audioFileStream(audioFileSystem: BSAudioFileStream, didReceiveError error: OSStatus)
     func audioFileStreamDidBecomeReady(audioFileStream: BSAudioFileStream)
-    func audioFileStream(audioFileStream: BSAudioFileStream, didReceiveData data: Data, length: UInt32, packetDescription: AudioStreamPacketDescription)
-    func audioFileStream(audioFileStream: BSAudioFileStream, didReceiveData data: Data, length: UInt32)
+    func audioFileStream(audioFileStream: BSAudioFileStream, didReceiveData data: UnsafeRawPointer, length: UInt32, packetDescription: AudioStreamPacketDescription)
+    func audioFileStream(audioFileStream: BSAudioFileStream, didReceiveData data: UnsafeRawPointer, length: UInt32)
 }
 
 func BSAudioFileStreamPropertyListener(inClientData: UnsafeMutableRawPointer, inAudioFileStreamID: AudioFileStreamID, inProperty: AudioFileStreamPropertyID, ioFlags: UnsafeMutablePointer<AudioFileStreamPropertyFlags>) {
@@ -103,6 +103,17 @@ class BSAudioFileStream: NSObject {
     
     func didReceivePackets(packets: UnsafeRawPointer, packetDescriptions: UnsafeMutablePointer<AudioStreamPacketDescription>, numberOfPackets: UInt32, numberOfBytes: UInt32) {
         
+        let ptr = UnsafeBufferPointer(start: packetDescriptions, count: Int(numberOfPackets))
+        if ptr.isEmpty {
+            delegate?.audioFileStream(audioFileStream: self, didReceiveData: packets, length: numberOfBytes)
+        } else {
+            ptr.forEach { description in
+                let packetOffset = description.mStartOffset
+                let packetSize = description.mDataByteSize
+                let offsetPtr = packets.advanced(by: Int(packetOffset))
+                self.delegate?.audioFileStream(audioFileStream: self, didReceiveData: offsetPtr, length: packetSize, packetDescription: description)
+            }
+        }
     }
     
     func parseData(data: UnsafeRawPointer, length: UInt32) {

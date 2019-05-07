@@ -58,11 +58,11 @@ extension BSAudioInputStreamer: BSAudioFileStreamDelegate {
         print(#function)
     }
     
-    func audioFileStream(audioFileStream: BSAudioFileStream, didReceiveData data: Data, length: UInt32, packetDescription: AudioStreamPacketDescription) {
+    func audioFileStream(audioFileStream: BSAudioFileStream, didReceiveData data: UnsafeRawPointer, length: UInt32, packetDescription: AudioStreamPacketDescription) {
         print(#function)
     }
     
-    func audioFileStream(audioFileStream: BSAudioFileStream, didReceiveData data: Data, length: UInt32) {
+    func audioFileStream(audioFileStream: BSAudioFileStream, didReceiveData data: UnsafeRawPointer, length: UInt32) {
         print(#function)
     }
     
