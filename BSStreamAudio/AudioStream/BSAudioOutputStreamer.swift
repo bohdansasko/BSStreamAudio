@@ -15,9 +15,6 @@ class BSAudioOutputStreamer: NSObject {
     private var assetOutput: AVAssetReaderTrackOutput?
     private var streamThread: Thread?
     
-    var audioStreamReadMaxLength: UInt32 = 255
-    var audioQueueBufferSize: UInt32 = 512
-    var audioQueueBufferCount: UInt32 = 3
     var isStreaming: Bool = false
     
     init(withOutputStream stream: OutputStream) {
